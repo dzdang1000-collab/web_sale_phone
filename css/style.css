@@ -32,6 +32,35 @@ body {
   line-height: 1.5;
 }
 
+/* ===== Form Elements ===== */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  background: var(--white);
+  color: var(--text-dark);
+  transition: all 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
 /* ===== Header ===== */
 header {
   background: var(--white);
@@ -338,8 +367,8 @@ header {
 
 .search-filter h3 {
   color: var(--primary);
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -349,29 +378,29 @@ header {
 }
 
 .search-filter h3::before {
-  content: '⚙️';
-  font-size: 1.3rem;
+  content: '🔍';
+  font-size: 1.2rem;
 }
 
 .filter-row {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .filter-group {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
-  background: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.75rem;
   transition: all 0.3s;
 }
 
 .filter-group:hover {
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.05);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
 }
 
 .filter-group:last-child {
@@ -383,34 +412,34 @@ header {
   font-weight: 600;
   color: var(--primary);
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.3px;
 }
 
 .filter-title {
   font-weight: 700;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--text-dark);
 }
 
 .filter-item {
   display: flex;
   align-items: center;
-  margin-bottom: 0.75rem;
-  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
   border-radius: 6px;
   transition: all 0.2s;
 }
 
 .filter-item:hover {
-  background: rgba(124, 58, 237, 0.05);
+  background: rgba(124, 58, 237, 0.08);
 }
 
 .filter-item input {
-  margin-right: 0.75rem;
+  margin-right: 0.6rem;
   cursor: pointer;
   width: 18px;
   height: 18px;
@@ -700,89 +729,121 @@ header {
 
 .cart-items {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.5rem;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+  margin-bottom: 2rem;
 }
 
 .cart-item {
   display: grid;
-  grid-template-columns: 100px 1fr auto;
+  grid-template-columns: 120px 1fr auto auto;
   gap: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f9f5ff 0%, #fff 100%);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  margin-bottom: 1rem;
   align-items: center;
+  transition: all 0.3s;
+}
+
+.cart-item:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
 }
 
 .cart-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .cart-item-image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
-  background: var(--primary-light);
-  border-radius: 4px;
-  padding: 0.5rem;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 0.75rem;
+  border: 2px solid var(--primary-light);
+}
+
+.cart-item-details {
+  flex: 1;
 }
 
 .cart-item-details h4 {
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-dark);
 }
 
 .cart-item-details p {
   font-size: 0.85rem;
   color: var(--text-lighter);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .cart-item-price {
   font-weight: 700;
   color: var(--primary);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .quantity-control {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--primary-light);
+  border-radius: 6px;
+  padding: 0.5rem;
 }
 
 .quantity-control button {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border);
-  background: var(--white);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--primary-light);
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
   font-weight: 600;
+  color: var(--primary);
   transition: all 0.3s;
+  font-size: 1rem;
 }
 
 .quantity-control button:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  background: var(--primary);
+  color: white;
 }
 
 .quantity-control input {
   width: 50px;
   text-align: center;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: none;
+  background: transparent;
   padding: 0.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
 }
 
 .cart-summary {
-  background: var(--primary-light);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 1.5rem;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  border-radius: 12px;
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
   height: fit-content;
-  position: sticky;
-  top: 100px;
+}
+
+.cart-summary h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1rem;
 }
 
 .summary-row {
@@ -790,14 +851,24 @@ header {
   justify-content: space-between;
   margin-bottom: 0.75rem;
   font-size: 0.95rem;
+  align-items: center;
+}
+
+.summary-row span:first-child {
+  font-weight: 500;
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
 }
 
 .summary-row.total {
-  border-top: 2px solid var(--border);
-  padding-top: 0.75rem;
-  margin-top: 0.75rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
+}
   color: var(--primary);
 }
 

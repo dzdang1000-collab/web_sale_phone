@@ -374,30 +374,36 @@ function setupFilterUI() {
     <div class="search-filter">
       <h3>🔍 Tìm kiếm & Lọc</h3>
       
+      <div class="filter-row" style="margin-bottom: 1rem;">
+        <button class="btn btn-primary" id="filterBtn" style="width: 100%;">
+          🔎 Áp dụng bộ lọc
+        </button>
+      </div>
+
       <div class="filter-row">
-        <div class="filter-group" style="grid-column: 1 / -1;">
-          <label>Tìm kiếm sản phẩm:</label>
-          <input type="text" id="searchInput" placeholder="Nhập tên sản phẩm...">
+        <div class="filter-group" style="grid-column: 1 / -1; margin-bottom: 0.5rem;">
+          <label>Tìm kiếm:</label>
+          <input type="text" id="searchInput" placeholder="Tên sản phẩm...">
         </div>
       </div>
 
       <div class="filter-row">
-        <div class="filter-group">
-          <label>Giá tối thiểu (VND):</label>
+        <div class="filter-group" style="margin-bottom: 0;">
+          <label>Giá min:</label>
           <input type="number" id="minPrice" placeholder="0">
         </div>
-        <div class="filter-group">
-          <label>Giá tối đa (VND):</label>
-          <input type="number" id="maxPrice" placeholder="999999999">
+        <div class="filter-group" style="margin-bottom: 0;">
+          <label>Giá max:</label>
+          <input type="number" id="maxPrice" placeholder="999M">
         </div>
-        <div class="filter-group">
+        <div class="filter-group" style="margin-bottom: 0;">
           <label>Sắp xếp:</label>
           <select id="sortBy">
             <option value="">-- Chọn --</option>
-            <option value="price-asc">Giá tăng dần</option>
-            <option value="price-desc">Giá giảm dần</option>
-            <option value="name-asc">Tên A-Z</option>
-            <option value="name-desc">Tên Z-A</option>
+            <option value="price-asc">Giá ↑</option>
+            <option value="price-desc">Giá ↓</option>
+            <option value="name-asc">A-Z</option>
+            <option value="name-desc">Z-A</option>
           </select>
         </div>
       </div>
@@ -406,25 +412,22 @@ function setupFilterUI() {
         <div class="filter-group">
           <label>🏢 Thương hiệu:</label>
           ${brands.map(brand => `
-            <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <label style="display: flex; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 0.9rem;">
               <input type="checkbox" name="brand" value="${brand}"> ${brand}
-            </label>
-          `).join('')}
-        </div>
-        <div class="filter-group">
-          <label>📱 Danh mục:</label>
-          ${categories.map(category => `
-            <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <input type="checkbox" name="category" value="${category}"> ${category}
             </label>
           `).join('')}
         </div>
       </div>
 
       <div class="filter-row">
-        <button class="btn btn-primary" id="filterBtn" style="grid-column: 1 / -1;">
-          🔎 Áp dụng bộ lọc
-        </button>
+        <div class="filter-group">
+          <label>📱 Danh mục:</label>
+          ${categories.map(category => `
+            <label style="display: flex; align-items: center; gap: 6px; margin-bottom: 5px; font-size: 0.9rem;">
+              <input type="checkbox" name="category" value="${category}"> ${category}
+            </label>
+          `).join('')}
+        </div>
       </div>
     </div>
   `;
