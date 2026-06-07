@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập - PhoneStore</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .login-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      min-height: calc(100vh - 200px);
+      align-items: center;
+    }
+
+    .login-info {
+      padding: 2rem;
+    }
+
+    .login-info h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .login-info p {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .login-benefits {
+      list-style: none;
+    }
+
+    .login-benefits li {
+      padding: 0.75rem 0;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+    }
+
+    .login-benefits li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .login-form-container {
+      background: var(--primary-light);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.15);
+    }
+
+    .login-form-container h2 {
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid var(--primary-light);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s;
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+      background: white;
+    }
+
+    .form-group input::placeholder {
+      color: #bbb;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .remember-forgot label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .remember-forgot a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .remember-forgot a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    .form-divider {
+      text-align: center;
+      margin: 1.5rem 0;
+      color: var(--text-lighter);
+      position: relative;
+    }
+
+    .form-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #ddd;
+      z-index: 0;
+    }
+
+    .form-divider span {
+      background: var(--primary-light);
+      padding: 0 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .signup-link a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .signup-link a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .login-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        min-height: auto;
+      }
+
+      .login-info {
+        display: none;
+      }
+
+      .login-info h1 {
+        font-size: 1.8rem;
+      }
+
+      .login-form-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">PhoneStore</a></div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm điện thoại, tablet...">
+      </div>
+      <div class="header-actions">
+        <a href="login.html">👤 Tài khoản</a>
+        <a href="cart.html">
+          🛒 Giỏ hàng
+          <span class="cart-badge" id="cartBadge"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html">Trang chủ</a>
+      <a href="index.html">Điện thoại</a>
+      <a href="index.html">Tablet</a>
+      <a href="#" onclick="alert('Chức năng demo')">Khuyến mãi</a>
+      <a href="#" onclick="alert('Chức năng demo')">Tin tức</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="login-container">
+    <div class="login-info">
+      <h1>Chào Mừng Quay Trở Lại</h1>
+      <p>Đăng nhập vào tài khoản PhoneStore của bạn để trải nghiệm các tiện ích tuyệt vời:</p>
+      <ul class="login-benefits">
+        <li>Xem lịch sử mua hàng của bạn</li>
+        <li>Bảo lưu địa chỉ giao hàng yêu thích</li>
+        <li>Nhận thông báo khuyến mãi độc quyền</li>
+        <li>Quản lý đơn hàng dễ dàng</li>
+        <li>Lưu sản phẩm yêu thích</li>
+        <li>Hỗ trợ khách hàng ưu tiên 24/7</li>
+      </ul>
+    </div>
+
+    <div class="login-form-container">
+      <h2>Đăng Nhập</h2>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email hoặc Số Điện Thoại</label>
+          <input type="text" id="email" name="email" placeholder="Nhập email hoặc số điện thoại" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật Khẩu</label>
+          <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+        </div>
+
+        <div class="remember-forgot">
+          <label>
+            <input type="checkbox" name="remember"> Nhớ tôi
+          </label>
+          <a href="#forgot">Quên mật khẩu?</a>
+        </div>
+
+        <button type="submit" class="btn-login">Đăng Nhập</button>
+
+        <div class="form-divider">
+          <span>hoặc</span>
+        </div>
+
+        <button type="button" class="btn-login" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);" onclick="handleSocialLogin('google')">
+          🔗 Đăng nhập bằng Google
+        </button>
+
+        <div class="signup-link">
+          Chưa có tài khoản? <a href="#signup">Đăng ký ngay</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Về PhoneStore</h4>
+        <ul>
+          <li><a href="#">Giới thiệu công ty</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Tin tức & sự kiện</a></li>
+          <li><a href="#">Blog công nghệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Dịch vụ khách hàng</h4>
+        <ul>
+          <li><a href="#">Liên hệ chúng tôi</a></li>
+          <li><a href="#">Chính sách bảo hành</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Hướng dẫn mua hàng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Thông tin</h4>
+        <ul>
+          <li><a href="#">Điều khoản dịch vụ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Bản quyền & Giấy phép</a></li>
+          <li><a href="#">Liên hệ quảng cáo</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>📞 Hotline: 1900-xxxx</li>
+          <li>📧 Email: support@phonestore.com</li>
+          <li>📍 Địa chỉ: 123 Nguyễn Huệ, TP. HCM</li>
+          <li style="margin-top: 1rem;">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">YouTube</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 PhoneStore. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.addEventListener('keyup', (e) => {
+          if (e.key === 'Enter') {
+            window.location.href = `index.html?search=${encodeURIComponent(searchInput.value)}`;
+          }
+        });
+      }
+    });
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      if (email.trim() && password.trim()) {
+        // Simulate login
+        localStorage.setItem('user_logged_in', JSON.stringify({
+          email: email,
+          loginTime: new Date().toLocaleString('vi-VN')
+        }));
+        
+        alert(`✅ Đăng nhập thành công!\n\nChào ${email}! Bạn có thể tiếp tục mua sắm.`);
+        window.location.href = 'index.html';
+      }
+    }
+
+    function handleSocialLogin(provider) {
+      alert(`Tính năng đăng nhập bằng ${provider} sẽ được phát triển sớm! 🚀`);
+    }
+  </script>
+</body>
+</html>

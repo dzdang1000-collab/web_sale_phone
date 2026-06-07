@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Sản Phẩm - PhoneStore</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .product-detail-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .product-detail-image {
+      background: var(--primary-light);
+      border-radius: 8px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+    }
+
+    .product-detail-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .product-detail-info h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .product-detail-brand {
+      color: var(--text-lighter);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .product-detail-rating {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .product-detail-price {
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .product-detail-price-old {
+      font-size: 1.1rem;
+      color: var(--text-lighter);
+      text-decoration: line-through;
+      margin-right: 1rem;
+    }
+
+    .product-detail-description {
+      color: var(--text-light);
+      line-height: 1.7;
+      margin: 1.5rem 0;
+    }
+
+    .product-detail-specs {
+      background: var(--primary-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .product-detail-specs h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .spec-label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .spec-value {
+      color: var(--text-light);
+    }
+
+    .quantity-selector {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+
+    .quantity-selector label {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .quantity-control {
+      display: flex;
+      gap: 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .quantity-control button {
+      width: 40px;
+      padding: 0.5rem;
+      border: none;
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .quantity-control button:hover {
+      background: var(--primary-light);
+    }
+
+    .quantity-control input {
+      width: 50px;
+      border: none;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .product-detail-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .btn-add-cart {
+      padding: 1rem;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-wish {
+      padding: 1rem;
+      background: var(--primary-light);
+      color: var(--text-dark);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-wish:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .product-detail-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .product-detail-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">PhoneStore</a></div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm điện thoại, tablet...">
+      </div>
+      <div class="header-actions">
+        <a href="login.html">👤 Tài khoản</a>
+        <a href="cart.html">
+          🛒 Giỏ hàng
+          <span class="cart-badge" id="cartBadge"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html">Trang chủ</a>
+      <a href="index.html">Điện thoại</a>
+      <a href="index.html">Tablet</a>
+      <a href="#" onclick="alert('Chức năng demo')">Khuyến mãi</a>
+      <a href="#" onclick="alert('Chức năng demo')">Tin tức</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div style="max-width: 1400px; margin: 0 auto; padding: 1rem 1.5rem;">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Trang chủ</a>
+      <span> > </span>
+      <span id="breadcrumbTitle">Chi tiết sản phẩm</span>
+    </div>
+
+    <!-- Product Detail -->
+    <div id="productDetail"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Về PhoneStore</h4>
+        <ul>
+          <li><a href="#">Giới thiệu công ty</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Tin tức & sự kiện</a></li>
+          <li><a href="#">Blog công nghệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Dịch vụ khách hàng</h4>
+        <ul>
+          <li><a href="#">Liên hệ chúng tôi</a></li>
+          <li><a href="#">Chính sách bảo hành</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Hướng dẫn mua hàng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Thông tin</h4>
+        <ul>
+          <li><a href="#">Điều khoản dịch vụ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Bản quyền & Giấy phép</a></li>
+          <li><a href="#">Liên hệ quảng cáo</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>📞 Hotline: 1900-xxxx</li>
+          <li>📧 Email: support@phonestore.com</li>
+          <li>📍 Địa chỉ: 123 Nguyễn Huệ, TP. HCM</li>
+          <li style="margin-top: 1rem;">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">YouTube</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 PhoneStore. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+      
+      if (productId) {
+        const product = getProductById(productId);
+        if (product) {
+          displayProductDetail(product);
+          updateCartBadge();
+        } else {
+          document.getElementById('productDetail').innerHTML = '<p>Sản phẩm không tồn tại</p>';
+        }
+      }
+    });
+
+    function displayProductDetail(product) {
+      const container = document.getElementById('productDetail');
+      const originalPrice = Math.round(product.price * 1.1);
+      
+      container.innerHTML = `
+        <div class="product-detail-container">
+          <div class="product-detail-image">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+          <div class="product-detail-info">
+            <div class="product-detail-brand">${product.brand}</div>
+            <h1>${product.name}</h1>
+            <div class="product-detail-rating">
+              ⭐⭐⭐⭐⭐ <span>(245 đánh giá)</span>
+            </div>
+            
+            <div class="product-detail-price">
+              <span class="product-detail-price-old">${formatPrice(originalPrice)}</span>
+              ${formatPrice(product.price)}
+            </div>
+
+            <p class="product-detail-description">
+              ${product.description}
+            </p>
+
+            <div class="product-detail-specs">
+              <h3>Thông số kỹ thuật</h3>
+              ${Object.entries(product.specs || {}).map(([key, value]) => `
+                <div class="spec-row">
+                  <div class="spec-label">${key}</div>
+                  <div class="spec-value">${value}</div>
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="quantity-selector">
+              <label>Số lượng:</label>
+              <div class="quantity-control">
+                <button onclick="decreaseQty()">-</button>
+                <input type="number" id="quantity" value="1" min="1" readonly>
+                <button onclick="increaseQty()">+</button>
+              </div>
+            </div>
+
+            <div class="product-detail-actions">
+              <button class="btn-add-cart" onclick="addToCartDetail(${product.id})">
+                🛒 Thêm vào giỏ
+              </button>
+              <button class="btn-wish">❤️ Thêm vào yêu thích</button>
+            </div>
+
+            <div style="background: var(--primary-light); border-radius: 8px; padding: 1rem; margin-top: 2rem;">
+              <p><strong>✓ Bảo hành 12 tháng</strong></p>
+              <p><strong>✓ Giao hàng miễn phí</strong></p>
+              <p><strong>✓ Đổi trả trong 7 ngày</strong></p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('breadcrumbTitle').textContent = product.name;
+    }
+
+    function increaseQty() {
+      const qty = document.getElementById('quantity');
+      qty.value = parseInt(qty.value) + 1;
+    }
+
+    function decreaseQty() {
+      const qty = document.getElementById('quantity');
+      if (parseInt(qty.value) > 1) {
+        qty.value = parseInt(qty.value) - 1;
+      }
+    }
+
+    function addToCartDetail(productId) {
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const product = getProductById(productId);
+      if (product) {
+        cart.addProduct(product, quantity);
+        showNotification(`Đã thêm ${quantity} ${product.name} vào giỏ hàng`);
+        updateCartBadge();
+      }
+    }
+  </script>
+</body>
+</html>

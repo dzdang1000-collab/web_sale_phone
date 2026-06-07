@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhoneStore - Cửa hàng điện thoại trực tuyến</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <div class="logo">PhoneStore</div>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm điện thoại, tablet...">
+      </div>
+      <div class="header-actions">
+        <a href="login.html">👤 Tài khoản</a>
+        <a href="cart.html">
+          🛒 Giỏ hàng
+          <span class="cart-badge" id="cartBadge"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="index.html">Trang chủ</a>
+      <a href="#products" onclick="filterByCategory('Smartphone')">Điện thoại</a>
+      <a href="#products" onclick="filterByCategory('Tablet')">Tablet</a>
+      <a href="#products" onclick="filterByCategory('Camera')">Máy ảnh</a>
+      <a href="#products" onclick="filterByCategory('Laptop')">Laptop</a>
+      <a href="#products" onclick="alert('Chức năng demo')">Khuyến mãi</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Khám Phá Công Nghệ Tương Lai</h1>
+      <p>Bộ sưu tập hoàn chỉnh smartphone, tablet, máy ảnh và laptop từ các thương hiệu hàng đầu thế giới</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">27+</div>
+          <div class="stat-label">Sản phẩm</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Thương hiệu</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Danh mục</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phone Info Section -->
+  <section class="phone-info-section">
+    <div class="info-container">
+      <div class="info-header">
+        <h2>Thông Tin Về Điện Thoại</h2>
+        <p>Hướng dẫn chọn điện thoại phù hợp với nhu cầu của bạn</p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-icon">📱</div>
+          <h3>Smartphone</h3>
+          <p>Các điện thoại thông minh cấp cao với công nghệ camera tiên tiến, pin khỏe và màn hình AMOLED sắc nét.</p>
+          <ul>
+            <li>🔹 Chip xử lý mạnh mẽ</li>
+            <li>🔹 Camera chất lượng cao</li>
+            <li>🔹 Pin dài lâu</li>
+            <li>🔹 Màn hình sắc nét</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">⌚</div>
+          <h3>Thông Số Kỹ Thuật</h3>
+          <p>Tìm hiểu chi tiết về các thông số kỹ thuật quan trọng khi chọn mua điện thoại.</p>
+          <ul>
+            <li>🔹 RAM: 6GB - 16GB</li>
+            <li>🔹 Storage: 128GB - 1TB</li>
+            <li>🔹 Camera: 12MP - 200MP</li>
+            <li>🔹 Pin: 4000 - 5500 mAh</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🏷️</div>
+          <h3>Giá Cả Hợp Lý</h3>
+          <p>Chúng tôi cung cấp các sản phẩm với giá cạnh tranh và chính sách bảo hành chu đáo.</p>
+          <ul>
+            <li>🔹 Giá từ 9M - 32M VND</li>
+            <li>🔹 Bảo hành 12 tháng</li>
+            <li>🔹 Giao hàng miễn phí</li>
+            <li>🔹 Đổi trả trong 7 ngày</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">🎯</div>
+          <h3>Cách Chọn Điện Thoại</h3>
+          <p>Những yếu tố cần xem xét khi lựa chọn điện thoại phù hợp với mục đích sử dụng.</p>
+          <ul>
+            <li>🔹 Xác định mục đích sử dụng</li>
+            <li>🔹 So sánh hiệu năng</li>
+            <li>🔹 Kiểm tra kích thước</li>
+            <li>🔹 Đánh giá giá trị</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Sidebar Filter -->
+    <aside class="sidebar" id="filterContainer"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span> > </span>
+        <span>Tất cả sản phẩm</span>
+      </div>
+
+      <!-- Content Header -->
+      <div class="content-header">
+        <h1 class="content-title">Tất cả sản phẩm</h1>
+        <select class="sort-select" id="sortBy">
+          <option value="">Sắp xếp mặc định</option>
+          <option value="price-asc">Giá: Thấp đến Cao</option>
+          <option value="price-desc">Giá: Cao đến Thấp</option>
+          <option value="name-asc">Tên: A - Z</option>
+          <option value="name-desc">Tên: Z - A</option>
+        </select>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productsContainer" class="products-grid"></div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Về PhoneStore</h4>
+        <ul>
+          <li><a href="#">Giới thiệu công ty</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Tin tức & sự kiện</a></li>
+          <li><a href="#">Blog công nghệ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Dịch vụ khách hàng</h4>
+        <ul>
+          <li><a href="#">Liên hệ chúng tôi</a></li>
+          <li><a href="#">Chính sách bảo hành</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Hướng dẫn mua hàng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Thông tin</h4>
+        <ul>
+          <li><a href="#">Điều khoản dịch vụ</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Bản quyền & Giấy phép</a></li>
+          <li><a href="#">Liên hệ quảng cáo</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>📞 Hotline: 1900-xxxx</li>
+          <li>📧 Email: support@phonestore.com</li>
+          <li>📍 Địa chỉ: 123 Nguyễn Huệ, TP. HCM</li>
+          <li style="margin-top: 1rem;">
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a> | 
+            <a href="#">YouTube</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 PhoneStore. Tất cả quyền được bảo lưu.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initializePage();
+      setupEventListeners();
+    });
+
+    function setupEventListeners() {
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortBy');
+
+      searchInput.addEventListener('keyup', performSearch);
+      sortSelect.addEventListener('change', performSort);
+    }
+
+    function performSearch() {
+      const query = document.getElementById('searchInput').value;
+      let results;
+
+      if (query.trim()) {
+        results = searchProducts(query);
+      } else {
+        results = getAllProducts();
+      }
+
+      results = applyCurrentFilters(results);
+      const sortBy = document.getElementById('sortBy').value;
+      if (sortBy) {
+        results = sortProducts(results, sortBy);
+      }
+
+      displayProductsModern(results, 'productsContainer');
+    }
+
+    function performSort() {
+      performSearch();
+    }
+  </script>
+</body>
+</html>

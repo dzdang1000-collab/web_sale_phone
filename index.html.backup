@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhoneStore - Cửa hàng bán điện thoại trực tuyến</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <div class="header-container">
+      <div class="logo">💎 PhoneStore</div>
+      <nav>
+        <a href="index.html">🏠 Trang chủ</a>
+        <a href="index.html#products">📱 Sản phẩm</a>
+        <a href="cart.html" class="cart-icon">
+          🛒 Giỏ hàng
+          <span class="cart-count"></span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Khám phá công nghệ</h1>
+      <p>Những chiếc điện thoại & tablet tốt nhất với giá cạnh tranh nhất</p>
+      <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView()">
+        ⬇ Xem sản phẩm ngay
+      </button>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container section">
+    <!-- Search & Filter -->
+    <div id="filterContainer"></div>
+
+    <!-- Products Grid -->
+    <section id="products">
+      <h2 class="section-title">✨ Những sản phẩm nổi bật</h2>
+      <div id="productsContainer" class="grid grid-3"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-section">
+        <h4>Về PhoneStore</h4>
+        <p>PhoneStore là cửa hàng bán điện thoại trực tuyến hàng đầu, cung cấp các sản phẩm chất lượng cao với giá cạnh tranh.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="#" onclick="alert('Chức năng demo')">Hỗ trợ khách hàng</a></li>
+          <li><a href="#" onclick="alert('Chức năng demo')">Chính sách bảo hành</a></li>
+          <li><a href="#" onclick="alert('Chức năng demo')">Chính sách đổi trả</a></li>
+          <li><a href="#" onclick="alert('Chức năng demo')">Giao hàng miễn phí</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Về chúng tôi</h4>
+        <ul>
+          <li><a href="#" onclick="alert('Chức năng demo')">Liên hệ chúng tôi</a></li>
+          <li><a href="#" onclick="alert('Chức năng demo')">Tuyển dụng</a></li>
+          <li><a href="#" onclick="alert('Chức năng demo')">Blog</a></li>
+          <li><a href="#" onclick="alert('Chức năng demo')">Điều khoản sử dụng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>📧 Email: info@phonestore.com</li>
+          <li>📱 Hotline: 0123-456-789</li>
+          <li>📍 Địa chỉ: 123 Đường Nguyễn Huệ, TP.HCM</li>
+          <li style="margin-top: 10px;">
+            <a href="#" onclick="alert('Chức năng demo')">Facebook</a> |
+            <a href="#" onclick="alert('Chức năng demo')">Instagram</a> |
+            <a href="#" onclick="alert('Chức năng demo')">Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2024 PhoneStore. All rights reserved. | Developed with ❤️</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script>
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
