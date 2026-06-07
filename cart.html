@@ -103,6 +103,24 @@
     </div>
   </footer>
 
+  <!-- Chat Widget -->
+  <div class="chat-widget">
+    <div class="chat-bubble" onclick="toggleChat()">💬</div>
+    <div class="chat-popup" id="chatPopup">
+      <div class="chat-header">
+        <h4>Hỗ trợ khách hàng</h4>
+        <button class="chat-close" onclick="toggleChat()">✕</button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message bot">Xin chào! 👋 Chúng tôi có thể giúp gì cho bạn?</div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Nhập tin nhắn..." onkeypress="handleChatInput(event)">
+        <button onclick="sendChatMessage()">Gửi</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
@@ -120,6 +138,61 @@
           window.location.href = `index.html?search=${encodeURIComponent(searchInput.value)}`;
         }
       });
+    }
+
+    // Chat Widget Functions
+    function toggleChat() {
+      const chatPopup = document.getElementById('chatPopup');
+      chatPopup.classList.toggle('active');
+    }
+
+    function sendChatMessage() {
+      const chatInput = document.getElementById('chatInput');
+      const message = chatInput.value.trim();
+      
+      if (!message) return;
+
+      const chatMessages = document.getElementById('chatMessages');
+      
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-message user';
+      userMsg.textContent = message;
+      chatMessages.appendChild(userMsg);
+
+      chatInput.value = '';
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-message bot';
+        botMsg.textContent = getAutoReply(message);
+        chatMessages.appendChild(botMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }, 500);
+    }
+
+    function handleChatInput(e) {
+      if (e.key === 'Enter') {
+        sendChatMessage();
+      }
+    }
+
+    function getAutoReply(message) {
+      const msg = message.toLowerCase();
+      const replies = {
+        'giá': '💰 Các sản phẩm của chúng tôi có giá từ 9 triệu đến 85 triệu đồng.',
+        'ship': '🚚 Phí vận chuyển: 50,000 đồng. Miễn phí cho đơn trên 5 triệu.',
+        'bảo hành': '🛡️ Tất cả sản phẩm đều bảo hành chính hãng.',
+        'đổi trả': '↩️ Chính sách đổi trả trong 7 ngày nếu sản phẩm lỗi.',
+        'liên hệ': '📞 Hotline: 1900-xxxx | Email: support@phonestore.com',
+        'thanks': '😊 Cảm ơn bạn!',
+      };
+
+      for (let key in replies) {
+        if (msg.includes(key)) return replies[key];
+      }
+
+      return '👋 Cảm ơn bạn! Bạn có thể hỏi về: giá, ship, bảo hành, đổi trả, liên hệ.';
     }
   </script>
 </body>
