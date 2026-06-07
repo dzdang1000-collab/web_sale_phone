@@ -1,35 +1,90 @@
 # 📱 PhoneStore - Website Bán Điện Thoại Trực Tuyến
 
+## 🌐 Live Demo
+🚀 **Website đang chạy tại:** https://dzdang1000-collab.github.io/web_sale_phone/
+
+[![Deploy Status](https://github.com/dzdang1000-collab/web_sale_phone/workflows/Deploy%20to%20GitHub%20Pages/badge.svg)](https://github.com/dzdang1000-collab/web_sale_phone/actions)
+
+---
+
 ## 🎯 Giới thiệu
-PhoneStore là một website bán điện thoại trực tuyến đơn giản, được xây dựng bằng HTML/CSS/JavaScript thuần. Website hỗ trợ tìm kiếm, lọc sản phẩm, và giỏ hàng với lưu trữ cục bộ (localStorage).
+PhoneStore là một website bán điện thoại, tablet, máy ảnh và laptop trực tuyến, được xây dựng bằng HTML/CSS/JavaScript thuần. Website hỗ trợ tìm kiếm, lọc sản phẩm, lọc theo danh mục, và giỏ hàng với lưu trữ cục bộ (localStorage).
 
 ## ✨ Tính năng
-- ✅ **Hiển thị danh sách sản phẩm** - 25 sản phẩm điện thoại và máy tính bảng
-- 🔍 **Tìm kiếm sản phẩm** - Tìm kiếm theo tên, thương hiệu, mô tả
-- 📊 **Lọc sản phẩm** - Lọc theo thương hiệu, danh mục, giá
-- 🔀 **Sắp xếp sản phẩm** - Sắp xếp theo giá (tăng/giảm), tên (A-Z/Z-A)
-- 🛒 **Giỏ hàng** - Thêm/xóa/cập nhật sản phẩm
+- ✅ **27+ sản phẩm** - Smartphone, Tablet, Camera, Laptop
+- ✅ **4 Danh mục** - Điện thoại, Máy tính bảng, Máy ảnh, Laptop
+- 🔍 **Tìm kiếm nâng cao** - Tìm kiếm theo tên, thương hiệu, mô tả
+- 📊 **Lọc đa chiều** - Lọc theo thương hiệu, danh mục, giá cả
+- 🔀 **Sắp xếp linh hoạt** - Sắp xếp theo giá (tăng/giảm), tên (A-Z/Z-A)
+- 📱 **Lọc theo danh mục** - Click các nút Điện thoại, Tablet, Máy ảnh, Laptop ở navbar
+- 🛒 **Giỏ hàng thông minh** - Thêm/xóa/cập nhật sản phẩm
 - 💾 **Lưu trữ cục bộ** - Giỏ hàng được lưu ở localStorage (persist khi reload)
 - 📦 **Chi tiết sản phẩm** - Xem thông tin chi tiết, specs sản phẩm
+- 👤 **Trang đăng nhập** - Mẫu login page
 - 📱 **Responsive Design** - Hỗ trợ desktop, tablet, mobile
+- 🌈 **Giao diện hiện đại** - Chủ đề tím gradient, shadows, animations
+
+## 🚀 Cách sử dụng nhanh
+1. **Truy cập website**: https://dzdang1000-collab.github.io/web_sale_phone/
+2. **Duyệt danh mục**: Click "Điện thoại", "Tablet", "Máy ảnh", "Laptop" ở navbar
+3. **Tìm kiếm**: Dùng ô search hoặc filter bên trái
+4. **Xem chi tiết**: Click vào sản phẩm để xem thông tin đầy đủ
+5. **Thêm vào giỏ**: Nhấn nút "Thêm vào giỏ"
+6. **Thanh toán**: Vào trang giỏ hàng để xem tóm tắt và thanh toán
 
 ## 📁 Cấu trúc thư mục
 ```
 clone_web_sale_phone/
-├── index.html                 # Trang chủ
+├── index.html                 # Trang chủ (Hero + Products)
 ├── cart.html                  # Trang giỏ hàng
 ├── product-detail.html        # Trang chi tiết sản phẩm
+├── login.html                 # Trang đăng nhập
 ├── css/
-│   ├── variables.css          # CSS variables (màu, spacing, font, shadow)
-│   └── style.css              # CSS chính (styles, layout, responsive)
+│   └── style.css              # CSS chính (purple theme, responsive)
 ├── js/
-│   ├── products.js            # Dữ liệu sản phẩm (25 items)
-│   ├── cart.js                # Logic giỏ hàng (class ShoppingCart)
-│   └── ui.js                  # Xử lý UI/DOM (display, filter, search)
-├── images/                    # Thư mục chứa ảnh (optional)
-├── data/                      # Thư mục chứa dữ liệu (optional)
+│   ├── products.js            # Dữ liệu sản phẩm (27 items)
+│   ├── cart.js                # Logic giỏ hàng
+│   └── ui.js                  # Xử lý UI/DOM
+├── .github/
+│   └── workflows/
+│       └── deploy.yml         # GitHub Actions deployment
+├── images/                    # Thư mục chứa ảnh
+├── data/                      # Thư mục chứa dữ liệu
+├── run.bat / run.ps1          # Scripts để chạy locally
+├── HƯỚNG_DẪN.md               # Hướng dẫn tiếng Việt
 └── README.md                  # File hướng dẫn này
 ```
+
+## 🎨 Sản phẩm & Danh mục
+
+### 📱 Smartphone (10 sản phẩm)
+- iPhone 15 Pro Max, iPhone 15 Plus
+- Samsung Galaxy S24 Ultra, Galaxy Z Fold 5
+- Google Pixel 8 Pro
+- OnePlus 12, Oppo Find X6 Pro
+- Vivo X100, Xiaomi Redmi Note 13, Motorola Edge 50 Ultra
+
+### 🖥️ Tablet (5 sản phẩm)
+- iPad Pro 12.9, iPad Air 2024
+- Samsung Galaxy Tab S10
+- Lenovo Tab P12 Pro
+- OnePlus Pad
+
+### 📷 Camera (6 sản phẩm)
+- Canon EOS R5
+- Sony Alpha 7R V
+- Nikon Z9
+- Fujifilm X-T5
+- Panasonic Lumix S5II
+- DJI Mavic 3 Pro
+
+### 💻 Laptop (6 sản phẩm)
+- MacBook Pro 16" M3 Max
+- Dell XPS 15
+- ASUS ZenBook 14 OLED
+- Lenovo ThinkPad X1 Carbon
+- HP Spectre x360 16
+- Microsoft Surface Laptop Studio
 
 ## 🚀 Cách sử dụng
 1. **Mở website**: Mở file `index.html` trong trình duyệt web
@@ -56,38 +111,31 @@ clone_web_sale_phone/
 - **Responsive**: Mobile-first design, hỗ trợ tất cả kích thước màn hình
 
 ## 💾 Lưu trữ dữ liệu
-- **Sản phẩm**: Hardcoded trong `js/products.js` (25 items)
+- **Sản phẩm**: Hardcoded trong `js/products.js` (27 items, 4 danh mục)
 - **Giỏ hàng**: Lưu ở localStorage với key `shopping_cart`
+- **Hình ảnh**: Từ Unsplash (URLs)
 - **Định dạng**: JSON
 
-### Ví dụ dữ liệu giỏ hàng:
+### Ví dụ dữ liệu sản phẩm:
 ```json
-[
-  {
-    "id": 1,
-    "name": "iPhone 15 Pro Max",
-    "price": 32000000,
-    "quantity": 2,
-    "image": "...",
-    "brand": "Apple"
+{
+  "id": 1,
+  "name": "iPhone 15 Pro Max",
+  "brand": "Apple",
+  "price": 32000000,
+  "category": "Smartphone",
+  "image": "https://images.unsplash.com/...",
+  "description": "Flagship cao cấp từ Apple với chip A17 Pro",
+  "specs": {
+    "screen": "6.7 inch Super Retina XDR",
+    "ram": "8GB",
+    "storage": "256GB",
+    "camera": "Main 48MP + Ultra 12MP",
+    "battery": "4,685 mAh",
+    "os": "iOS 17"
   }
-]
+}
 ```
-
-## 📊 Dữ liệu sản phẩm
-Mỗi sản phẩm có các thông tin sau:
-- `id`: ID duy nhất
-- `name`: Tên sản phẩm
-- `brand`: Thương hiệu
-- `price`: Giá (VND)
-- `category`: Danh mục (Smartphone, Tablet)
-- `image`: URL hình ảnh
-- `description`: Mô tả sản phẩm
-- `specs`: Thông số kỹ thuật (screen, ram, storage, camera, battery, os)
-
-### Các sản phẩm có sẵn:
-- **Smartphone**: iPhone, Samsung Galaxy, Google Pixel, OnePlus, Xiaomi, OPPO, Vivo, Motorola, Nothing, Realme, Honor, POCO, Sony Xperia, Huawei
-- **Tablet**: iPad Pro, iPad Air, Samsung Galaxy Tab, Lenovo Tab, OnePlus Pad
 
 ## 🎯 Chức năng chi tiết
 
@@ -131,35 +179,64 @@ Mỗi sản phẩm có các thông tin sau:
 - Edge (mới nhất)
 - Mobile browsers (Chrome, Safari iOS, Firefox Mobile)
 
-## 🚫 Giới hạn & Lưu ý
-- ❌ Không có backend - tất cả dữ liệu được hardcode
-- ❌ Không có thanh toán thực tế - chỉ là demo
-- ❌ Không có xác thực người dùng
-- ❌ Không có lịch sử đơn hàng
-- ⚠️ Dữ liệu giỏ hàng chỉ lưu trên thiết bị này (localStorage)
-- ⚠️ Hình ảnh sản phẩm là placeholder, có thể thay bằng URL thực
+## 🚀 Chạy cục bộ (Local Development)
 
-## 📈 Mở rộng tương lai
-- [ ] Backend API (Node.js/Express, Laravel, Python)
-- [ ] Database (MySQL, MongoDB, PostgreSQL)
-- [ ] Xác thực người dùng (JWT, OAuth)
-- [ ] Quản lý đơn hàng
-- [ ] Lịch sử mua hàng
-- [ ] Rating & Review sản phẩm
-- [ ] Thanh toán online (Stripe, PayPal)
-- [ ] Admin panel
-- [ ] Email notifications
-- [ ] Real-time inventory
+### Yêu cầu
+- Python 3.6+ hoặc Node.js 14+
+- Trình duyệt web (Chrome, Firefox, Safari, Edge)
+- Git (để clone repository)
+
+### Hướng dẫn cài đặt
+1. **Clone repository:**
+   ```bash
+   git clone https://github.com/dzdang1000-collab/web_sale_phone.git
+   cd web_sale_phone
+   ```
+
+2. **Chạy với Python:**
+   ```bash
+   python -m http.server 8000
+   # Hoặc: python3 -m http.server 8000
+   ```
+
+3. **Hoặc dùng Windows batch script:**
+   ```bash
+   run.bat
+   ```
+
+4. **Mở trình duyệt:**
+   - Truy cập: http://localhost:8000
+
+### Dừng server
+- Nhấn `Ctrl + C` trong terminal
+
+## 🌐 Triển khai (Deployment)
+
+Website được tự động deploy lên GitHub Pages khi bạn push code:
+
+1. **Push code:**
+   ```bash
+   git add .
+   git commit -m "Your message"
+   git push origin main
+   ```
+
+2. **GitHub Actions tự động chạy** (xem tại Actions tab)
+
+3. **Website cập nhật tại:** https://dzdang1000-collab.github.io/web_sale_phone/
 
 ## 📝 License
 Dự án này là demo/học tập, không có giới hạn sử dụng.
 
 ## 👤 Tác giả
-PhoneStore Demo - Tạo bởi AI Assistant
+PhoneStore - Tạo bởi Dang Tran
 
-## 📧 Hỗ trợ
-Đây là project demo, không có hỗ trợ chính thức. Bạn có thể tự do chỉnh sửa và mở rộng.
+## 📧 Liên hệ
+- GitHub: https://github.com/dzdang1000-collab
+- Email: dzdang1000@gmail.com
 
 ---
 
 **Thưởng thức mua sắm trực tuyến tại PhoneStore!** 🎉
+
+[🔗 Truy cập website](https://dzdang1000-collab.github.io/web_sale_phone/) | [⭐ GitHub](https://github.com/dzdang1000-collab/web_sale_phone)
